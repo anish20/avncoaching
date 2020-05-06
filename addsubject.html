@@ -173,8 +173,8 @@
                                         <!-- @*<h4 class="card-title mb-sm-0">Subject List</h4>*@ -->
                                       
                                     </div>
-                                    <div class=" p-0 deskt-tble">
-                                        <table id="subjectTable" class="table table-bordered table-responsive" style="width:100%">
+                                    <div class=" p-0 deskt-tble ">
+                                        <table id="subjectTable" class="table table-bordered w-100"  >
                                             <thead class="bg-light">
                                                 <tr>
                                                     <th>SNo.</th>
@@ -187,6 +187,8 @@
                                             </thead>
                                             <tbody></tbody>
                                         </table>
+
+                                       
                                     </div>
 
                                      </div>
@@ -296,10 +298,21 @@
 
 
 <script>
+     $( window ).resize(function() {
+      var width= $(window).width();
+      if(width >0 && width<=560){
+           $("#subjectTable").addClass('table-responsive');
+       }
+  //$( "body" ).prepend( "<div>" + width+ "</div>" );
+});
     var table;
     $(document).ready(function () {
       
         bindSubject();
+    //     var width= $(document).width();
+    //    if(width >0 && width<=560){
+    //        $("#subjectTable").addClass('table-responsive');
+    //    }
         
     });
 
@@ -348,7 +361,7 @@
                                         <button class="badge badge-danger p-2"><i class="fa fa-trash"></i></button>  
                                         `;
                             },
-                            width:"50px"
+                            width:"100px"
                         }
                     ],
                     "columnDefs": [{
