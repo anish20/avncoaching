@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="login/vendor/css-hamburgers/hamburgers.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="login/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css"  media="all" href="login/css/login-mobile.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="login/css/util.css">
     <link rel="stylesheet" type="text/css" href="login/css/main.css">
@@ -52,10 +53,10 @@
     </style>
     <div class="limiter">
         <div class="container-login100">
-            <div class="wrap-login100 p-l-50 p-r-50 p-t-77 p-b-30" style="background: rgba(0, 0, 0, 0.5);">
+            <div class="wrap-login100 p-l-50 p-r-50 p-t-47 p-b-30" style="background: rgba(0, 0, 0, 0.5);">
                 <div class="login100-form validate-form">
-                    <span class="login100-form-title p-b-55 text-white">
-                        Member Login
+                    <span class="login100-form-title p-b-25 text-white">
+                       AVN Member Login
                     </span>
     
                     <div class="wrap-input100 validate-input m-b-16" data-validate="Valid email is required: ex@abc.xyz">
@@ -188,7 +189,7 @@
                 window.location.href="/avncoaching/dashboard.html";
             }else{
                 swal("Oh No!", `Sorry Userid and password invalid`, "error");
-                $("#saveBtn").html('Sign in');
+                $("#saveBtn").html('Sign in'); 
                 return false;
             }
             // $.ajax({

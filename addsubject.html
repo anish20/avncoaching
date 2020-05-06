@@ -23,6 +23,7 @@
     <link rel="shortcut icon" href="Admin/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="login/css/main.css">
     <link rel="stylesheet" type="text/css" href="login/css/util.css">
+    <link rel="stylesheet" type="text/css"  media="all" href="Admin/css/mobile-view.css">
     <link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -90,8 +91,8 @@
 
     <div class="container-scroller">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="navbar-brand-wrapper d-flex align-items-center">
-                <a class="navbar-brand brand-logo" href="index.html">
+            <div class="navbar-brand-wrapper d-flex align-items-center mobile-item">
+                <a class="navbar-brand brand-logo" href="dashboard.html">
                     <img src="Admin/images/logo1.png" alt="logo" class="logo-dark" style="height:50px" />
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="dashboard.html"><img src="Admin/images/logo1.png" alt="logo" style="height:50px;width:100px" /></a>
@@ -136,7 +137,7 @@
                         <span class="nav-link">Dashboard</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="Index" asp-controller="Home">
+                        <a class="nav-link" hr>
                             <span class="menu-title">Dashboard</span>
                             <i class="icon-screen-desktop menu-icon"></i>
                         </a>
@@ -172,7 +173,7 @@
                                         <!-- @*<h4 class="card-title mb-sm-0">Subject List</h4>*@ -->
                                       
                                     </div>
-                                    <div class="table-responsive p-0">
+                                    <div class="table-responsive p-0 deskt-tble">
                                         <table id="subjectTable" class="table table-bordered" style="width:100%">
                                             <thead class="bg-light">
                                                 <tr>
@@ -181,6 +182,22 @@
                                                     <th>Description</th>
                                                     <th>Created Date</th>
                                                     <th>Updated Date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="table-responsive p-0 d-none mobile-disp">
+                                        <table id="subjectMTable" class="table table-bordered" style="width:100%">
+                                            <thead class="bg-light">
+                                                <tr>
+                                                    <th>SNo.</th>
+                                                    <th>Subject</th>
+                                                    <!-- <th>Description</th>
+                                                    <th>Created Date</th>
+                                                    <th>Updated Date</th> -->
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -295,9 +312,11 @@
 
 <script>
     var table;
+    var mTable;
     $(document).ready(function () {
       
         bindSubject();
+        bindMobileSubject();
         
     });
 
@@ -331,7 +350,8 @@
                     data: response,
                     "bLengthChange": false,
                     //"dom": '<"pull-left"f>',
-                      "dom": '<"pull-left"f><"pull-right addButton"l>tip',
+                    "pageLength": 2,
+                      "dom": '<"pull-left"f><"pull-right addButtons"l>tip',
                    "processing": true, // for show progress bar  
                     columns: [
                         { title: "SNo.",width:"10px" },
@@ -356,11 +376,75 @@
                         }
                     }]
                 });
-                $(".addButton").html(`<a href="#" class="btn btn-sm btn-primary"> Add New Subject <i class="fa fa-plus"></i></a>`);
+                $(".addButtons").html(`<a href="#" class="btn btn-sm btn-primary"> Add New Subject <i class="fa fa-plus"></i></a> `);
                 
           
     }
    
+    function bindMobileSubject() {
+        var index=0;
+               var response=[
+                   {
+                   id:1,
+                   name:'Math',
+                   description:'this is math subject',
+                   createdon:'30-02-2020',
+                   updatedon:'02-04-2020'
+                  },
+                  {
+                   id:2,
+                   name:'Physics',
+                   description:'this is physics subject',
+                   createdon:'30-02-2020',
+                   updatedon:'02-04-2020'
+               },
+               {
+                   id:3,
+                   name:'Chemistry',
+                   description:'this is chemistry subject',
+                   createdon:'30-02-2020',
+                   updatedon:'02-04-2020'
+               }
+               
+               ]
+                mTable = $('#subjectMTable').DataTable({
+                    data: response,
+                    "bLengthChange": false,
+                    //"dom": '<"pull-left"f>',
+                    "pageLength": 2,
+                      "dom": '<"pull-left"f><"pull-right addButton"l>tip',
+                   "processing": true, // for show progress bar  
+                    columns: [
+                        { title: "SNo.",width:"10px" },
+                        {title:"Subject","data":"name"},
+                        // {title:"Description","data":"description"},
+                        // {title:"Created Date","data":"createdon"},
+                        // { title: "Updated Date", "data": "updatedon" },
+                        {
+                            "render": function (data, type, item, meta) {
+                                return `<button class="badge badge-warning p-2"><i class="fa fa-edit"></i></button>  
+                                        <button class="badge badge-danger p-2"><i class="fa fa-trash"></i></button>  
+                                        `;
+                            },
+                            width:"50px"
+                        }
+                    ],
+                    "columnDefs": [{
+                        "targets": 0,
+                        "render": (i,row) => {
+                            index = index + 1;
+                            return `<span>${index}</span>`
+                        }
+                    }]
+                });
+                $(".addButton").html(` <a href="#" class="btn btn-sm btn-primary d-none mobile-disp"> Add Subject <i class="fa fa-plus"></i></a>`);
+                
+          
+    }
+   
+
+
+
 </script>
 </body>
 </html >

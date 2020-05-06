@@ -23,6 +23,7 @@
     <link rel="shortcut icon" href="Admin/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="login/css/main.css">
     <link rel="stylesheet" type="text/css" href="login/css/util.css">
+    <link rel="stylesheet" type="text/css"  media="all" href="Admin/css/mobile-view.css">
     <link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -90,8 +91,8 @@
 
     <div class="container-scroller">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="navbar-brand-wrapper d-flex align-items-center">
-                <a class="navbar-brand brand-logo" href="index.html">
+            <div class="navbar-brand-wrapper d-flex align-items-center mobile-item">
+                <a class="navbar-brand brand-logo" href="dashboard.html">
                     <img src="Admin/images/logo1.png" alt="logo" class="logo-dark" style="height:50px" />
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="dashboard.html"><img src="Admin/images/logo1.png" alt="logo" style="height:50px;width:100px" /></a>
@@ -115,7 +116,7 @@
                                     <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile </a>
                                     <a class="dropdown-item" onclick="openChangePassModal()"><i class="dropdown-item-icon icon-lock-open text-primary"></i> Change Password</a>
                                     <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i> Activity</a>
-                                    <a class="dropdown-item" asp-action="Index" asp-controller="Account"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                                    <a class="dropdown-item" href="index.html"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
                                 </div>
                             </li>
 
@@ -136,7 +137,7 @@
                         <span class="nav-link">Dashboard</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="Index" asp-controller="Home">
+                        <a class="nav-link" href="dashboard.html">
                             <span class="menu-title">Dashboard</span>
                             <i class="icon-screen-desktop menu-icon"></i>
                         </a>
@@ -164,7 +165,7 @@
                 <div class="content-wrapper">
                     <h4 style="text-shadow: 2px 1px #e7d9d9;font-weight:bold;">Add New Student</h4><hr />
                     <div class="student-form">
-                        <div class="container p-3">
+                        <div class="container p-3 mobile-container">
                             <fieldset class="p-2" style="border:solid 1px rgba(0, 0, 0, 0.1); background:#faf9f9">
                                 <legend class="w-auto" style="font-size: 17px;text-shadow: 2px 1px #e7d9d9;font-weight:bold;"><i class="icon-user-follow menu-icon"></i> Student form</legend>
                                 <div class="p-3">

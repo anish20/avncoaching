@@ -23,6 +23,7 @@
     <link rel="shortcut icon" href="Admin/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="login/css/main.css">
     <link rel="stylesheet" type="text/css" href="login/css/util.css">
+    <link rel="stylesheet" type="text/css"  media="all" href="Admin/css/mobile-view.css">
     <link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
@@ -73,8 +74,8 @@
 
     <div class="container-scroller">
         <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
-            <div class="navbar-brand-wrapper d-flex align-items-center">
-                <a class="navbar-brand brand-logo" href="index.html">
+            <div class="navbar-brand-wrapper d-flex align-items-center mobile-item">
+                <a class="navbar-brand brand-logo" href="dashboard.html">
                     <img src="Admin/images/logo1.png" alt="logo" class="logo-dark" style="height:50px" />
                 </a>
                 <a class="navbar-brand brand-logo-mini" href="dashboard.html"><img src="Admin/images/logo1.png" alt="logo" style="height:50px;width:100px" /></a>
@@ -119,7 +120,7 @@
                         <span class="nav-link">Dashboard</span>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" asp-action="Index" asp-controller="Home">
+                        <a class="nav-link" href="dashboard.html">
                             <span class="menu-title">Dashboard</span>
                             <i class="icon-screen-desktop menu-icon"></i>
                         </a>
@@ -210,10 +211,16 @@
                     <div class="row quick-action-toolbar">
                         <div class="col-md-12 grid-margin">
                             <div class="card">
-                                <div class="card-header d-block d-md-flex">
+                                <div class="card-header d-block d-md-flex quick-action-desktop">
                                     <h5 class="mb-0">Quick Actions</h5>
                                     <p class="ml-auto mb-0">How are your active users trending overtime?<i class="icon-bulb"></i> <a href="#" id="timeclock" class="text-white"><i class="icon-clock"></i></a></p>
                                 </div>
+                            
+                                <div class="card-header d-none  quick-action-mobile">
+                                    <h5 class="mb-0">Quick Actions</h5>
+                                    <p class="ml-auto mb-0 "><i class="icon-bulb"></i></p>
+                                </div>
+
                                 <div class="d-md-flex row m-0 quick-action-btns" role="group" aria-label="Quick action buttons">
                                     <div class="col-sm-6 col-md-3 p-3 text-center btn-wrapper">
                                         <button type="button" class="btn px-0" > <i class="icon-user mr-2" style="text-shadow: 2px 1px #e7d9d9;font-weight:bold;"></i> Add New Student</button>
@@ -238,9 +245,15 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="d-sm-flex align-items-baseline report-summary-header">
-                                                <h5 class="font-weight-semibold">Student Report Summary</h5> <span class="ml-auto">Updated Report</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
-                                            </div>
+                                            <div class="d-sm-flex align-items-baseline report-summary-header report-desktop">
+                                                 <h5 class="font-weight-semibold">Student Report Summary</h5> <span class="ml-auto">Updated Report</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
+                                            
+                                              </div>
+                                              <div class="d-sm-none align-items-baseline report-summary-header report-mobile">
+                                                <h6 class="font-weight-semibold">Student Summary</h6> <span class="ml-auto">Refresh</span> <button class="btn btn-icons border-0 p-2"><i class="icon-refresh"></i></button>
+                                           
+                                             </div>
+                                              
                                         </div>
                                     </div>
                                     <div class="row report-inner-cards-wrapper">

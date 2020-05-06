@@ -1,0 +1,15 @@
+@media(max-width:560px){
+    .login100-form-title{
+        /* color: red !important; */
+        font-size: 25px !important;
+        text-shadow: 2px 1px #e7d9d9;
+    }
+    .input100 {
+        height: 50px !important;
+    }
+
+    .login100-form-btn {
+       height: 50px !important;
+       margin-top: -10px !important;
+    }
+}
