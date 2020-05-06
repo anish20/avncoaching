@@ -51,7 +51,7 @@
     } */
 
 
-    .deskt-tble{
+    /* .deskt-tble{
         display: none !important;
     }
 
@@ -63,10 +63,10 @@
         width: 80% !important;
         height: 33px;
     }
-
-    div.dataTables_wrapper div.dataTables_info{
-        display: none !important;
-    }
+*/
+div.dataTables_wrapper div.dataTables_info{
+    display: none !important;
+}
 
     
 }
