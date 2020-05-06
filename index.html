@@ -185,7 +185,7 @@
             var url = "/Account/Login";
             var jsonObj = JSON.stringify({ userId: emailId, password: password });
             if(emailId=="naveen123@gmail.com" && password=="123456"){
-                window.location.href="dashboard.html";
+                window.location.href="/avncoaching/dashboard.html";
             }else{
                 swal("Oh No!", `Sorry Userid and password invalid`, "error");
                 $("#saveBtn").html('Sign in');
