@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> OnlineStudentManagement</title>
+    <link rel="stylesheet" href="Admin/vendors/simple-line-icons/css/simple-line-icons.css">
+    <link rel="stylesheet" href="Admin/vendors/flag-icon-css/css/flag-icon.min.css">
+    <link rel="stylesheet" href="Admin/vendors/css/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="Admin/vendors/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="Admin/vendors/chartist/chartist.min.css">
+
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="Admin/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="Admin/images/favicon.png" />
+    <link rel="stylesheet" type="text/css" href="login/css/main.css">
+    <link rel="stylesheet" type="text/css" href="login/css/util.css">
+    <link rel="stylesheet" type="text/css" href="login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="login/vendor/animate/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="Admin/vendors/js/vendor.bundle.base.js"></script>
+    
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+            /* Handle on hover */
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+        .email-error, .pass-error, .conpass-error {
+            margin-top: -12px;
+            padding-bottom: 5px;
+            color: red;
+        }
+    
+    .gj-datepicker span {
+        display: none;
+    }
+
+    #btnSave {
+        /*background: none;*/
+        border: 2px solid #fff;
+        border-radius: 5px;
+        color: #fff;
+        display: block;
+        position: relative;
+        text-transform: uppercase;
+    }
+
+        #btnSave:hover {
+            color: #ffecec;
+        }
+</style>
+</head>
+<body>
+
+    <div class="container-scroller">
+        <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+            <div class="navbar-brand-wrapper d-flex align-items-center">
+                <a class="navbar-brand brand-logo" href="index.html">
+                    <img src="Admin/images/logo1.png" alt="logo" class="logo-dark" style="height:50px" />
+                </a>
+                <a class="navbar-brand brand-logo-mini" href="dashboard.html"><img src="Admin/images/logo1.png" alt="logo" style="height:50px;width:100px" /></a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center flex-grow-1">
+                <!-- @*<h5 class="mb-0 font-weight-medium d-none d-lg-flex">Welcome AVN Coaching dashboard!</h5>*@ -->
+                <h5 class="mb-0 font-weight-medium d-lg-flex" style="text-shadow: 2px 1px #e7d9d9;font-weight:bold;">AVN Coaching</h5>
+                <ul class="navbar-nav navbar-nav-right ml-auto">
+
+                 
+                            <li class="nav-item dropdown d-xl-inline-flex user-dropdown">
+                                <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                    <img class="img-xs rounded-circle ml-2" src="Admin/images/faces/face8.jpg" alt="Profile image"> <span class="font-weight-normal"> admin</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                                    <div class="dropdown-header text-center">
+                                        <img class="img-md rounded-circle" src="Admin/images/faces/face8.jpg" alt="Profile image">
+                                        <p class="mb-1 mt-3"> admin <span class="fa fa-check-circle-o text-success"></span></p>
+                                        <p class="font-weight-light text-muted mb-0">admin</p>
+                                    </div>
+                                    <a class="dropdown-item"><i class="dropdown-item-icon icon-user text-primary"></i> My Profile </a>
+                                    <a class="dropdown-item" onclick="openChangePassModal()"><i class="dropdown-item-icon icon-lock-open text-primary"></i> Change Password</a>
+                                    <a class="dropdown-item"><i class="dropdown-item-icon icon-energy text-primary"></i> Activity</a>
+                                    <a class="dropdown-item" asp-action="Index" asp-controller="Account"><i class="dropdown-item-icon icon-power text-primary"></i>Sign Out</a>
+                                </div>
+                            </li>
+
+
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+
+
+        <div class="container-fluid page-body-wrapper">
+            <!-- partial:partials/_sidebar.html -->
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-category">
+                        <span class="nav-link">Dashboard</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" asp-action="Index" asp-controller="Home">
+                            <span class="menu-title">Dashboard</span>
+                            <i class="icon-screen-desktop menu-icon"></i>
+                        </a>
+                    </li>
+                    <!-- @*<li class="nav-item nav-category"><span class="nav-link">UI Elements</span></li>*@ -->
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="menu-title">Master</span>
+                            <i class="icon-user-follow menu-icon"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic">
+                            <ul class="nav flex-column  ">
+                                <li class="nav-item p-0"> <a class="nav-link mt-tg" href="addstudent.html">Add New Student &nbsp;<i class="fa fa-plus"></i></a></li>
+                                <li class="nav-item p-0"> <a class="nav-link mt-tg" href="addsubject.html">Add Subject &nbsp;<i class="fa fa-plus"></i></a></li>
+
+                            </ul>
+                        </div>
+                    </li>
+
+                </ul>
+            </nav>
+            <!-- partial -->
+            <div class="main-panel">
+              
+                <div class="content-wrapper">
+                    <h4 style="text-shadow: 2px 1px #e7d9d9;font-weight:bold;">Subject Management</h4><hr />
+                
+                    <div class="row">
+                        <div class="col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-sm-flex align-items-center mb-4">
+                                        <!-- @*<h4 class="card-title mb-sm-0">Subject List</h4>*@ -->
+                                      
+                                    </div>
+                                    <div class="table-responsive p-0">
+                                        <table id="subjectTable" class="table table-bordered" style="width:100%">
+                                            <thead class="bg-light">
+                                                <tr>
+                                                    <th>SNo.</th>
+                                                    <th>Subject Name</th>
+                                                    <th>Description</th>
+                                                    <th>Created Date</th>
+                                                    <th>Updated Date</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+              
+                <footer class="footer">
+                    <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                        <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2017 <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap Dash</a>. All rights reserved.</span>
+                        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="icon-heart text-danger"></i></span>
+                    </div>
+                </footer>
+                <div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Change PAssword Modal--->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content" style="background:#d78585">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Change New Password</h5>
+                    <button type="button" class="close" style="" onclick="closeModal()">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="login100-form">
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100" type="text" id="email" placeholder="Email">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <span class="lnr lnr-envelope"></span>
+                            </span>
+                        </div>
+                        <div class="email-error"></div>
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100" type="password" id="password" placeholder="Password">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <span class="lnr lnr-lock"></span>
+                            </span>
+                        </div>
+                        <div class="pass-error"></div>
+                        <div class="wrap-input100 validate-input m-b-16">
+                            <input class="input100" type="password" id="con-password" placeholder="Confirm Password">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <span class="lnr lnr-lock"></span>
+                            </span>
+                        </div>
+                        <div class="conpass-error"></div>
+                        <div class="container-login100-form-btn p-t-25">
+                            <button class="login100-form-btn" id="btnChangePass" onclick="ChangePasswordAuthentication()">
+                                Change Password
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!----------Modal close--------->
+    <!-- partial -->
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <!-- @*<script src="~/login/vendor/jquery/jquery-3.2.1.min.js"></script>*@ -->
+    <script src="Admin/vendors/chart.js/Chart.min.js"></script>
+    <script src="Admin/vendors/moment/moment.min.js"></script>
+    <script src="Admin/vendors/daterangepicker/daterangepicker.js"></script>
+    <script src="Admin/vendors/chartist/chartist.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="Admin/js/off-canvas.js"></script>
+    <script src="Admin/js/misc.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page -->
+    <!-- @*<script src="Admin/js/dashboard.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" ></script>*@ -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/dt-1.10.20/datatables.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+
+
+
+
+<style>
+    div.dataTables_wrapper div.dataTables_filter input {
+        background: #e9e9e9;
+    }
+</style>
+
+
+<script>
+    var table;
+    $(document).ready(function () {
+      
+        bindSubject();
+        
+    });
+
+    function bindSubject() {
+        var index=0;
+               var response=[
+                   {
+                   id:1,
+                   name:'Math',
+                   description:'this is math subject',
+                   createdon:'30-02-2020',
+                   updatedon:'02-04-2020'
+                  },
+                  {
+                   id:2,
+                   name:'Physics',
+                   description:'this is physics subject',
+                   createdon:'30-02-2020',
+                   updatedon:'02-04-2020'
+               },
+               {
+                   id:3,
+                   name:'Chemistry',
+                   description:'this is chemistry subject',
+                   createdon:'30-02-2020',
+                   updatedon:'02-04-2020'
+               }
+               
+               ]
+                table = $('#subjectTable').DataTable({
+                    data: response,
+                    "bLengthChange": false,
+                    //"dom": '<"pull-left"f>',
+                      "dom": '<"pull-left"f><"pull-right addButton"l>tip',
+                   "processing": true, // for show progress bar  
+                    columns: [
+                        { title: "SNo.",width:"10px" },
+                        {title:"Subject Name","data":"name"},
+                        {title:"Description","data":"description"},
+                        {title:"Created Date","data":"createdon"},
+                        { title: "Updated Date", "data": "updatedon" },
+                        {
+                            "render": function (data, type, item, meta) {
+                                return `<button class="badge badge-warning p-2"><i class="fa fa-edit"></i></button>  
+                                        <button class="badge badge-danger p-2"><i class="fa fa-trash"></i></button>  
+                                        `;
+                            },
+                            width:"50px"
+                        }
+                    ],
+                    "columnDefs": [{
+                        "targets": 0,
+                        "render": (i,row) => {
+                            index = index + 1;
+                            return `<span>${index}</span>`
+                        }
+                    }]
+                });
+                $(".addButton").html(`<a href="#" class="btn btn-sm btn-primary"> Add New Subject <i class="fa fa-plus"></i></a>`);
+                
+          
+    }
+   
+</script>
+</body>
+</html >

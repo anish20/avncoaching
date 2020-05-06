@@ -34,7 +34,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="login/css/util.css">
     <link rel="stylesheet" type="text/css" href="login/css/main.css">
-
+    <script src="login/vendor/jquery/jquery-3.2.1.min.js"></script>
     <style>
         body {
             font-family: 'Noto Serif JP';
@@ -138,6 +138,134 @@
     <script src="login/vendor/select2/select2.min.js"></script>
     <!--===============================================================================================-->
     <script src="login/js/main.js"></script>
+
+   
+<script>
+    $(document).ready(() => {
+        $("#email").blur(() => {
+            $(".emailId-error").html(null);
+        });
+
+        $("#password").blur(() => {
+            $(".password-error").html(null);
+        });
+
+        $("#email-forgot").blur(() => {
+            $(".pass-error").html(null);
+        });
+    });
+    function closeModal() {
+        $('#exampleModalCenter').modal('hide');
+        $("#email-forgot").val('');
+
+    }
+
+    function openModal() {
+        $('#exampleModalCenter').modal('show');
+    }
+
+    $("#password").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $("#saveBtn").click();
+    }
+});
+    //Login function
+    function loginAuthentication() {
+        var emailId = $("#email").val();
+        var password = $("#password").val();
+        if (emailId.length == 0 && emailId == "") {
+            $(".emailId-error").html("<span>Please Enter Email Id</span>").css("color", "red");
+        }
+        if (password.length == 0 && password == "") {
+            $(".password-error").html("<span>Please Enter Password</span>").css("color", "red");
+
+        }
+        if (emailId != "" && password != "") {
+            $("#saveBtn").html(`<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i> Loading... `);
+            var url = "/Account/Login";
+            var jsonObj = JSON.stringify({ userId: emailId, password: password });
+            if(emailId=="naveen123@gmail.com" && password=="123456"){
+                window.location.href="/dashboard.html";
+            }else{
+                swal("Oh No!", `Sorry Userid and password invalid`, "error");
+                $("#saveBtn").html('Sign in');
+                return false;
+            }
+            // $.ajax({
+            //     type: "POST",
+            //     url: url,
+            //     contentType: "application/json;charset=utf-8",
+            //     data: jsonObj,
+            //     success: function (response) {
+            //         if (response.id > 0) {
+            //             window.location.href = '/Home'
+            //         }
+            //         else {
+            //             swal("Oh No!", `Sorry Userid and password invalid`, "error");
+            //             $("#saveBtn").html('Sign in');
+            //             return false;
+            //             // alert("");
+            //         }
+            //     },
+            //     error: function (error) {
+            //         swal("Oh No!", `Sorry something went wrong ${error}`, "error");
+            //         $("#saveBtn").html('Sign in');
+            //     }
+            // })
+            
+            return true;
+        }
+
+    }
+    //Forgot Password 
+    function getPassAuthentication() {
+         var emailId = $("#email-forgot").val();
+        if (emailId.length == 0 && emailId == "") {
+            $(".pass-error").html("<span>Please Enter Email Id</span>").css("color", "red");
+        }
+
+        if (emailId != "") {
+
+            $("#btnForgotPass").html(`<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i> Loading... `);
+            var url = "/Account/GetPassword";
+            var jsonObj = JSON.stringify({ userId: emailId});
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: "application/json;charset=utf-8",
+                data: jsonObj,
+                success: function (response) {
+                    if (response.id > 0) {
+                      
+                        setTimeout(() => {
+                        swal("Good Job!", `Password :${response.password}`, "success");
+                        $("#btnForgotPass").html('Get Password');
+                            closeModal();
+                        }, 1000);
+                       
+                        return true;
+                    }
+                    else {
+                        swal("Oh No!", `Sorry Userid invalid`, "error");
+                        $("#btnForgotPass").html('Get Password');
+                        closeModal();
+                        return false;
+                        // alert("");
+                    }
+                },
+                error: function (error) {
+                    swal("Oh No!", `Sorry something went wrong ${error}`, "error");
+                    $("#btnForgotPass").html('Get Password');
+                }
+            })
+            return true;
+        }
+    }
+
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
 
 </body>
 </html>
