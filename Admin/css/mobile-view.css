@@ -68,7 +68,16 @@ div.dataTables_wrapper div.dataTables_info{
     display: none !important;
 }
 
+.table-responsive {
+    display: block !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 
+}
     
 }
 
+.table-responsive {
+    display: inline-table;
+   
+}

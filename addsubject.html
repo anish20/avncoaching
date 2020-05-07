@@ -298,13 +298,9 @@
 
 
 <script>
-     $( window ).resize(function() {
-      var width= $(window).width();
-      if(width >0 && width<=560){
-           $("#subjectTable").addClass('table-responsive');
-       }
-  //$( "body" ).prepend( "<div>" + width+ "</div>" );
-});
+     if (window.matchMedia('(max-width: 560px)').matches){
+        $("#subjectTable").addClass('table-responsive');
+     }
     var table;
     $(document).ready(function () {
       
