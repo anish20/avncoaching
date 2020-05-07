@@ -75,6 +75,17 @@ div.dataTables_wrapper div.dataTables_info{
 
 }
     
+.mycard .card .card-body{
+    padding: 4px !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-left: 0.9em !important;
+    display: inline-block;
+    width: 100% !important;
+}
+
+
 }
 
 .table-responsive {
